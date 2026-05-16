@@ -20,5 +20,6 @@ public class Producto {
         if (stock > 100) return "EXCEDENTE";
         return "DESCONOCIDO"; // Code Smell: rama inalcanzable
     }
+
 }
 
