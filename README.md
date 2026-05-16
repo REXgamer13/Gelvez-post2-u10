@@ -246,51 +246,101 @@ sonar.qualitygate=Universidad-Quality-Gate
 
 ---
 
-## 📝 Proceso de Análisis en SonarQube
+## 🚀 Instrucciones de Ejecución
 
-### Paso 1: Configurar el Proyecto
-1. Crear nuevo proyecto en SonarQube
-2. Asignar la clave del proyecto: `com.universidad:productos-service`
-3. Configurar los parámetros de análisis
+### Requisitos Previos
+- **Java 21** o superior
+- **Maven 3.8.1** o superior
+- **SonarQube 9.x** o superior (para análisis de calidad)
+- **Git** (control de versiones)
 
-### Paso 2: Crear Quality Gate Personalizado
-1. Ir a **Administration** → **Quality Gates**
-2. Crear nuevo Quality Gate con criterios personalizados
-3. Definir umbrales para bugs, vulnerabilidades, code smells, cobertura
+### Instalación y Configuración
 
-### Paso 3: Asignar Quality Gate
-1. Seleccionar el proyecto
-2. Ir a **Project Settings** → **Quality Gate**
-3. Asignar el Quality Gate personalizado
-
-### Paso 4: Ejecutar Análisis
+#### 1. Clonar el Repositorio
 ```bash
-mvn clean verify sonar:sonar
+git clone <repository-url>
+cd Gelvez-post2-u10
 ```
 
-### Paso 5: Revisar Resultados
-1. Acceder al Dashboard del proyecto
-2. Analizar los issues identificados
-3. Corregir problemas según recomendaciones
+#### 2. Compilar el Proyecto
+```bash
+mvn clean compile
+```
 
-### Paso 6: Re-ejecutar Análisis
-1. Aplicar correcciones al código
-2. Ejecutar nuevamente el análisis
-3. Verificar mejora en las métricas
+#### 3. Ejecutar Pruebas Unitarias
+```bash
+mvn test
+```
+
+#### 4. Ejecutar la Aplicación
+```bash
+mvn spring-boot:run
+```
+La aplicación estará disponible en: `http://localhost:8080`
+
+#### 5. Generar Reporte de Cobertura
+```bash
+mvn clean verify
+```
+El reporte de JaCoCo estará en: `target/site/jacoco/index.html`
 
 ---
 
-## ✅ Próximos Pasos y Plan de Acción
+## 📝 Proceso de Análisis en SonarQube
 
-- [ ] **Semana 1:** Revisar y corregir los issues de Reliability (constructor injection)
-- [ ] **Semana 1:** Revisar y corregir los issues de Maintainability (parámetros no utilizados)
-- [ ] **Semana 2:** Aumentar la cobertura de pruebas unitarias a 50%
-- [ ] **Semana 2:** Implementar pruebas de integración
-- [ ] **Semana 3:** Alcanzar 80% de cobertura de código
-- [ ] **Semana 3:** Re-ejecutar análisis de SonarQube
-- [ ] **Semana 4:** Monitorear métricas continuamente en el tiempo
+### Paso 1: Configurar SonarQube Localmente
+1. Descargar e instalar SonarQube desde https://www.sonarqube.org/
+2. Iniciar el servicio: `sonar.sh console` (Linux/Mac) o `StartSonar.bat` (Windows)
+3. Acceder a: `http://localhost:9000` (usuario: admin / contraseña: admin)
+
+### Paso 2: Crear Nuevo Proyecto
+1. Crear nuevo proyecto en SonarQube
+2. Asignar la clave del proyecto: `com.universidad:productos-service`
+3. Configurar los parámetros de análisis en `sonar-project.properties`
+
+### Paso 3: Crear Quality Gate Personalizado
+1. Ir a **Administration** → **Quality Gates**
+2. Crear nuevo Quality Gate: `Universidad-Quality-Gate`
+3. Definir umbrales para:
+   - Bugs: ≤ 0
+   - Vulnerabilidades: ≤ 0
+   - Code Smells: ≤ 10
+   - Cobertura: ≥ 80%
+
+### Paso 4: Asignar Quality Gate al Proyecto
+1. Seleccionar el proyecto
+2. Ir a **Project Settings** → **Quality Gate**
+3. Asignar el Quality Gate personalizado: `Universidad-Quality-Gate`
+
+### Paso 5: Ejecutar Análisis con SonarQube
+```bash
+# Opción 1: Usando sonar-project.properties
+mvn clean verify sonar:sonar
+
+# Opción 2: Con parámetros explícitos
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=com.universidad:productos-service \
+  -Dsonar.projectName=Productos-Service \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=<token-o-usuario>
+```
+
+### Paso 6: Revisar Resultados en el Dashboard
+1. Acceder a: `http://localhost:9000/dashboard?id=com.universidad:productos-service`
+2. Analizar los issues identificados en:
+   - **Reliability Issues**: Problemas de confiabilidad
+   - **Maintainability Issues**: Problemas de mantenibilidad
+   - **Code Coverage**: Cobertura de pruebas
+3. Revisar las capturas en la sección "📸 Galería de Imágenes"
+
+### Paso 7: Corregir Issues y Re-ejecutar Análisis
+1. Aplicar las correcciones recomendadas al código
+2. Ejecutar pruebas unitarias: `mvn test`
+3. Re-ejecutar análisis: `mvn clean verify sonar:sonar`
+4. Verificar mejora en las métricas del Dashboard
 
 ---
+
 
 ## 📚 Referencias y Recursos
 
