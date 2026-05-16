@@ -244,7 +244,6 @@ sonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 sonar.qualitygate=Universidad-Quality-Gate
 ```
 
-
 ---
 
 ## 🚀 Instrucciones de Ejecución
