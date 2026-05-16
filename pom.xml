@@ -8,11 +8,12 @@
         <version>4.0.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <!-- .................................... -->
     <groupId>com.universidad.patrones</groupId>
     <artifactId>productos-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Gelvez-post1-u10</name>
-    <description>Gelvez-post1-u10</description>
+    <name>Gelvez-post2-u10</name>
+    <description>Gelvez-post2-u10</description>
     <url/>
     <licenses>
         <license/>
@@ -162,6 +163,7 @@
                     </execution>
                 </executions>
             </plugin>
+
              <plugin>
                  <groupId>org.apache.maven.plugins</groupId>
                  <artifactId>maven-surefire-plugin</artifactId>
@@ -169,6 +171,7 @@
                      <argLine>${argLine}</argLine>
                  </configuration>
              </plugin>
+
              <plugin>
                  <groupId>org.sonarsource.scanner.maven</groupId>
                  <artifactId>sonar-maven-plugin</artifactId>
